@@ -1,0 +1,105 @@
+/**
+ * App main file
+ */
+
+
+/**
+ * global vars
+ */
+ 
+ $path-imgs : '';
+ $path-fonts : '';
+ 
+@font-face {
+    font-family: 'pacificoregular';
+    src: url('../fonts/pacifico/Pacifico-webfont.eot');
+    src: url('../fonts/pacifico/Pacifico-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/pacifico/Pacifico-webfont.woff2') format('woff2'),
+         url('../fonts/pacifico/Pacifico-webfont.woff') format('woff'),
+         url('../fonts/pacifico/Pacifico-webfont.ttf') format('truetype'),
+         url('../fonts/pacifico/Pacifico-webfont.svg#pacificoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+// Colors
+$c-white : #fff;
+$c-black : #000;
+
+$c-primary-warning : #f52258;
+$c-primary-warning : #FF412E;
+
+$c-primary-success : #a2e28e;
+$c-primary-body : #2e3138;
+$c-primary-title : #1a0a51;
+$c-primary-em : #787878;
+$c-primary-bg-alt : #fafafa; 
+$c-primary-bg-alt : #f4efef;
+
+$c-primary-border: #d9d9d9;
+$c-primary-btn : #f45a40;
+$c-secondary-btn : #1086fd; 
+
+$c-dark-primary-bg : #445569;
+$c-dark-primary-bg-alt : #4e5e71;
+$c-dark-primary-border : #22f6cc;
+$c-dark-primary-border-alt : #3a4859;
+$c-dark-primary-body : #22f6cc;
+$c-dark-primary-body-alt : #2e3138;
+
+
+//sections colors
+$c-directory : #0cc5fd;
+$c-agenda : #f56e7c;
+$c-discussion : #89177d;
+$c-document : #5fd06a;
+$c-job : #f08615;
+$c-press : #ed407d;
+$c-feedback: #0599be;
+$c-dark : $c-dark-primary-bg;
+$c-acqua : #03d5ee;
+$c-green : #5fd06a;
+$c-fushia : #ed407d;
+$c-blue : #017efd;
+
+//agenda events
+$c-event-public : #fed854;
+$c-event-private : #6dc8f3;
+$c-event-standby : #9ddd89;
+
+
+//layout main width
+$main-nav-full : 300px;
+$main-nav-small : 80px;
+
+$sidebar-width-full: 400px;
+$sidebar-width-small: 100%;
+
+// Animations
+$transition-duration : .3s; 
+$transition-function : cubic-bezier(0.165, 0.84, 0.44, 1);
+
+//webfonts mixins
+@mixin baseFont() {
+	font-family: 'Roboto', sans-serif;
+}
+
+/**
+ * imports
+ */
+@import 'vendors/_normalize.scss';
+@import '_bootstrap.scss';
+
+@import '_styles.scss';
+@import '_sidebar.scss';
+@import '_login.scss';
+
+//display all elements: use it to see/debug overflowing elements
+// body {
+// 	*,
+// 	*:before,
+// 	*:after {
+// 		@include outline;
+// 	}
+// } 

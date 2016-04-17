@@ -1,5 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	Hello World
+	<header></header>
+	<section>
+	<nav>
+		<ul>
+			<li><a href="#" class="nav__btn"><span class="glyphicon glyphicon-globe"></span></a></li>
+			<li><a href="#" class="nav__btn"><span class="glyphicon glyphicon-send"></span></a></li>
+			<li><a href="#" class="nav__btn"><span class="glyphicon glyphicon-map-marker"></span></a></li>
+			<li><a href="#" class="nav__btn"><span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a href="#" class="nav__btn sidebar__control"><span class="glyphicon glyphicon-plus"></span></a></li>
+			<li><a href="{{path('fos_user_security_logout')}}" class="nav__btn"><span class="glyphicon glyphicon-off"></span></a></li>
+		</ul>
+	</nav>
+	</section>
+	<aside class="sidebar"></aside>
+	<footer></footer>
 {% endblock %}

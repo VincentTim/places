@@ -5,6 +5,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<script type="text/javascript" src="{{ asset('dist/scripts/bundle.js') }}" ></script>
+		<link rel="stylesheet" type="text/css" href="{{ asset('dist/styles/app.css') }}"> 
     </head>
     <body style="margin:0; padding:0; background:#AEF432">
         {% block body %}{% endblock %}
