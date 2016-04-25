@@ -10,7 +10,7 @@ module.exports = function(context){
 
 	function homeBackground(){
 
-		$('.login').backstretch("web/images/bg-breme.jpg");
+		$('.login').backstretch("images/bg-breme.jpg");
 
 	}
 	
