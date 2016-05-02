@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "datepicker-moment": "^2.0.2",
+    "highcharts": "^4.2.4",
     "jquery": "^1.11.3",
     "jquery-ui": "^1.10.5",
     "moment": "^2.11.1",

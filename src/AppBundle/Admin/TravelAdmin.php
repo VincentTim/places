@@ -11,7 +11,14 @@ class TravelAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', 'text');
+        $formMapper->add('name')
+            ->add('period_from')
+            ->add('period_to')
+            ->add('cover')
+            ->add('summary')
+            ->add('description')
+            ->add('tags')//entity
+            ->add('country');//entity
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

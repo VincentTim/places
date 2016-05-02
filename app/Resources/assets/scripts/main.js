@@ -3,8 +3,8 @@
 	"use strict";
 
 	var modules = [
-		'sidebar',
-		'_backstretch'
+		'_backstretch',
+        '_collection'
 	];
 
 	var modulesLoaded = [];

@@ -112,6 +112,10 @@ liip_imagine:
             quality: 75
             filters:
                 relative_resize: { heighten: 300 }
+        avatar_list:
+            quality: 75
+            filters:
+                relative_resize: { heighten: 40 }
 
 sonata_block:
     default_contexts: [cms]

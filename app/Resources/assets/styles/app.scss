@@ -1,6 +1,16 @@
 /**
  * App main file
  */
+@mixin borderRadius($value) {
+    -webkit-border-radius: $value;
+    -moz-border-radius: $value;
+    border-radius: $value;
+}
+@mixin navLinkState() {
+    border-left: 3px solid $c-yellow-lime;
+    background:$c-active-blue;
+    color: $c-white;
+}
 
 
 /**
@@ -28,10 +38,31 @@ $c-white : #fff;
 $c-black : #000;
 $c-orange: #F24C27;
 
+$c-light-grey: #e0e0e0;
+
+$c-dark-blue: #024959;
+
+$c-green-light: #b3dbc0;
+$c-green-darker: #9bc3a8;
+
+$c-yellow-lime: #f3ffbd;
+$c-yellow-lime-dark: #deeaa8;
+
+$c-green-mint: #70c0b3;
+$c-green-mint-dark: #5eac9f;
+
 //agenda events
-$c-event-public : #fed854;
-$c-event-private : #6dc8f3;
-$c-event-standby : #9ddd89;
+$c-dark-primary-border : #22f6cc;
+$c-dark-primary-border-alt : #3a4859;
+
+//dashboard
+$c-blue-dark: #166e94;
+$c-lighter-grey: #f9f9f9;
+$c-grey: #c9c9c9;
+$c-active-blue: #055a7f;
+$c-light-blue: #5396b2;
+
+
 
 
 //layout main width
@@ -56,9 +87,11 @@ $transition-function : cubic-bezier(0.165, 0.84, 0.44, 1);
 @import 'vendors/_normalize.scss';
 @import '_bootstrap.scss';
 
-@import '_styles.scss';
+/*@import '_styles.scss';
 @import '_sidebar.scss';
 @import '_login.scss';
+@import '_progress-bar.scss';*/
+@import '_dashboard.scss';
 
 //display all elements: use it to see/debug overflowing elements
 // body {
