@@ -30,16 +30,16 @@ class Travel
     private $name;
 
     /**
-     * @var datetime
+     * @var date
      *
-     * @ORM\Column(name="period_from", type="datetime")
+     * @ORM\Column(name="period_from", type="date")
      */
     private $period_from;
 
     /**
-     * @var datetime
+     * @var date
      *
-     * @ORM\Column(name="period_to", type="datetime")
+     * @ORM\Column(name="period_to", type="date")
      */
     private $period_to;
 
@@ -86,7 +86,7 @@ class Travel
 
     /**
     *
-    * @ORM\ManyToMany(targetEntity="Tag", mappedBy="travels")
+    * @ORM\ManyToMany(targetEntity="Tag", mappedBy="travels", cascade={"persist", "remove"})
     **/
     private $tags;
 

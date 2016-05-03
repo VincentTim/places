@@ -30,16 +30,16 @@ class Travel
     private $name;
 
     /**
-     * @var datetime
+     * @var date
      *
-     * @ORM\Column(name="period_from", type="datetime")
+     * @ORM\Column(name="period_from", type="date")
      */
     private $period_from;
 
     /**
-     * @var datetime
+     * @var date
      *
-     * @ORM\Column(name="period_to", type="datetime")
+     * @ORM\Column(name="period_to", type="date")
      */
     private $period_to;
 
@@ -86,7 +86,7 @@ class Travel
 
     /**
     *
-    * @ORM\ManyToMany(targetEntity="Tag", mappedBy="travels")
+    * @ORM\ManyToMany(targetEntity="Tag", mappedBy="travels", cascade={"persist", "remove"})
     **/
     private $tags;
 
@@ -312,5 +312,68 @@ class Travel
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \AppBundle\Entity\Tag $tags
+     * @return Travel
+     */
+    public function addTag(\AppBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \AppBundle\Entity\Tag $tags
+     */
+    public function removeTag(\AppBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\Country $country
+     * @return Travel
+     */
+    public function setCountry(\AppBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }

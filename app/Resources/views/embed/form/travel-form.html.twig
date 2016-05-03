@@ -1,4 +1,5 @@
-<form name="" id="" action="" method="post" enctype="">
+{{dump(form)}}
+<form name="{{ form.vars.name }}" id="{{ form.vars.id }}" action="{{ path('dashboard_trip_contribute') }}" method="post" enctype="">
 	{{form_row(form.name)}}
 	{{form_row(form.period_from)}}
 	{{form_row(form.period_to)}}
