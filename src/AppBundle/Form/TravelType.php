@@ -49,6 +49,9 @@ class TravelType extends AbstractType
             ->add('tags', 'collection', array(
                     'entry_type'   => new TagType(),
                     'allow_add'    => true,
+					'options' => array(
+						'label' => false
+					)
                 )
             )//entity
             ->add('country')//entity

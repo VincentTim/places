@@ -3,31 +3,12 @@
 {% block body %}
 <aside id="dashboard-nav-wrapper" class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
     <div class="avatar">
-        <img src="{{ 'upload/avatar/alysson._grayce.jpg' | imagine_filter('avatar_list') }}" />
+        <img src="{{ 'upload/user/alysson_grayce.jpg' | imagine_filter('avatar_list') }}" />
         <span>Alysson Grayce</span>
     </div>
-    <nav id="dashboard-nav">
-        <ul>
-            <li>
-                <a href="#" class="active"><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_trip')}}"><span class="glyphicon glyphicon-send"></span>Voyages</a>
-            </li>
-            <li>
-                <a href="#"><span class="glyphicon glyphicon-map-marker"></span>Lieux</a>
-            </li>
-            <li>
-                <a href="#"><span class="glyphicon glyphicon-comment"></span>Commentaires</a>
-            </li>
-            <li>
-                <a href="#"><span class="glyphicon glyphicon-user"></span>Mon profil</a>
-            </li>
-            <li>
-                <a href="{{path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-off"></span>Déconnexion</a>
-            </li>
-        </ul>
-    </nav>
+    
+	{% include 'embed/nav/dashboard-nav.html.twig' %}
+	
 </aside>
 <div id="dashboard-content-wrapper" class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
     <div class="ariane-wrapper">
@@ -43,8 +24,7 @@
             <p>Welcome back Alysson</p>
         </header>
         <div class="dashboard--wrapper row col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            {#{dashboard_count_block_render('green', 'send', '1254', 'voyages')}#}
-            {% form_theme form 'default/bootstrap_3_layout.html.twig' %}
+            
             {% block dashboard_content %}
             {% endblock %}
         </div>

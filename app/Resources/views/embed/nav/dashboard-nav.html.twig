@@ -1,0 +1,20 @@
+<nav id="dashboard-nav">
+        <ul>
+            
+			{% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard', label: 'Dashboard', icon: 'dashboard' } %}
+			{% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard_trip', label: 'Voyages', icon: 'send' } %}
+	
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-map-marker"></span>Lieux</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-comment"></span>Commentaires</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-user"></span>Mon profil</a>
+            </li>
+            <li>
+                <a href="{{path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-off"></span>Déconnexion</a>
+            </li>
+        </ul>
+    </nav>

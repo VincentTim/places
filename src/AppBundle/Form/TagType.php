@@ -16,7 +16,7 @@ class TagType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                    'label' => 'Mot clé',
+                    'label' => false,
                     'required' => true
                 )
             )

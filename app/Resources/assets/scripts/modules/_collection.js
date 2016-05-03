@@ -11,11 +11,11 @@ module.exports = function(context){
         var $collectionHolder;
 
         // setup an "add a tag" link
-        var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
-        var $newLinkLi = $('<li></li>').append($addTagLink);
+        var $addTagLink = $('<a href="#" class="btn btn-info add_tag_link">Ajouter un mot-clé</a>');
+        var $newLinkLi = $('<div></div>').append($addTagLink);
         
         // Get the ul that holds the collection of tags
-        $collectionHolder = $('ul.tags');
+        $collectionHolder = $('#appbundle_travel_tags');
 
         // add the "add a tag" anchor and li to the tags ul
         $collectionHolder.append($newLinkLi);
@@ -31,7 +31,7 @@ module.exports = function(context){
             // add a new tag form (see next code block)
             addTagForm($collectionHolder, $newLinkLi);
         });
-    });
+    };
     
     function addTagForm($collectionHolder, $newLinkLi) {
         // Get the data-prototype explained earlier
@@ -48,7 +48,7 @@ module.exports = function(context){
         $collectionHolder.data('index', index + 1);
 
         // Display the form in the page in an li, before the "Add a tag" link li
-        var $newFormLi = $('<li></li>').append(newForm);
+        var $newFormLi = $('<div></div>').append(newForm);
         $newLinkLi.before($newFormLi);
     }
 	

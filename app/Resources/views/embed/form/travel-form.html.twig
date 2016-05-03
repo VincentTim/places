@@ -1,1 +1,15 @@
-{{form(form)}}
+<form name="" id="" action="" method="post" enctype="">
+	{{form_row(form.name)}}
+	{{form_row(form.period_from)}}
+	{{form_row(form.period_to)}}
+	{{form_row(form.cover)}}
+	{{form_row(form.summary)}}
+	{{form_row(form.description)}}
+	{{form_row(form.country)}}
+	<div class="form-tags">
+		{{ form_row(form.tags) }}
+		<div class="form-group">
+			<ul class="tags"></ul>
+		</div>
+	</div>
+{{form_end(form)}}

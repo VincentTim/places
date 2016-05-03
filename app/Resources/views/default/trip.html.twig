@@ -1,9 +1,10 @@
 {% extends 'default/dashboard.html.twig' %}
 
 {% block dashboard_content %}
+{% form_theme form 'default/bootstrap_3_layout.html.twig' %}
 <div class="row">
     <div class="form-wrapper col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        {{form(form)}}
+        {% include 'embed/form/travel-form.html.twig' %}
     </div>
 </div>
 
