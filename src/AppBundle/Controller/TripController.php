@@ -48,7 +48,8 @@ class TripController extends Controller
 							$tag->addTravel($trip);
 							$trip->addTag($tag);
 					}
-					
+					$trip->setPeriodFrom(new \DateTime());
+					$trip->setPeriodTo(new \DateTime());
 					$trip->setCreated(new \DateTime());
 					$trip->setUpdated(new \DateTime());
 					$this->get('entity.management')->add($trip);
