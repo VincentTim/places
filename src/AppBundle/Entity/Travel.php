@@ -32,14 +32,14 @@ class Travel
     /**
      * @var date
      *
-     * @ORM\Column(name="period_from", type="date")
+     * @ORM\Column(name="period_from", type="string", length=10)
      */
     private $period_from;
 
     /**
      * @var date
      *
-     * @ORM\Column(name="period_to", type="date")
+     * @ORM\Column(name="period_to", type="date", type="string", length=10)
      */
     private $period_to;
 

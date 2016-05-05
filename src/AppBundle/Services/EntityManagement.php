@@ -28,7 +28,7 @@ class EntityManagement extends Controller
      */
     public function rep($entity)
     {
-        return $this->getDoctrine()->getRepository('AppBundle:' . $entity);
+        return $this->entityManager->getRepository('AppBundle:' . $entity);
     }
 
     /**

@@ -13,22 +13,38 @@ use AppBundle\Form\TagType;
 
 use AppBundle\Entity\Travel;
 
-class TripController extends Controller
+class TravelController extends Controller
 {
     /**
-     * @Route("/dashboard/voyages", name="dashboard_trip")
+     * @Route("/dashboard/voyages", name="dashboard_travel")
      */
     public function indexAction()
     {
+    
+        $liste = $this->get('entity.management')->rep('Travel')->findAll();
+        return $this->render('default/travel.html.twig', array(
+            'liste' => $liste
+            )
+        );
+    }
+    
+    /**
+     * @Route("/dashboard/voyages/ajout", name="dashboard_travel_add")
+     */
+    public function addTravelAction()
+    {
         $form = $this->createForm(new TravelType());
-        return $this->render('default/trip.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/travel.html.twig', array(
+            'form'=>$form->createView()
+            )
+        );
     }
 	
 	/**
 	*
-	* @Route("/dashboard/voyages/contribution", name="dashboard_trip_contribute")
+	* @Route("/dashboard/voyages/contribution", name="dashboard_travel_contribute")
 	*/
-	public function contributeTripAction(Request $request)
+	public function contributeTravelAction(Request $request)
 	{
 		$trip = new Travel();
 		
@@ -48,12 +64,11 @@ class TripController extends Controller
 							$tag->addTravel($trip);
 							$trip->addTag($tag);
 					}
-					$trip->setPeriodFrom(new \DateTime());
-					$trip->setPeriodTo(new \DateTime());
+					
 					$trip->setCreated(new \DateTime());
 					$trip->setUpdated(new \DateTime());
 					$this->get('entity.management')->add($trip);
-					return $this->redirectToRoute('dashboard_trip', array(), 301);
+					return $this->redirectToRoute('dashboard_travel_add', array(), 301);
 				} catch(\Exception $e){
 					var_dump($e);
 				}

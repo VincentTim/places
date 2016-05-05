@@ -2,19 +2,21 @@
         <ul>
             
 			{% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard', label: 'Dashboard', icon: 'dashboard' } %}
-			{% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard_trip', label: 'Voyages', icon: 'send' } %}
-	
+			
+	        <li>
+                <a href="#" class="dropdown"><span class="glyphicon glyphicon-send"></span>Voyages</a>
+                <ul>
+                    <li><a href="{{ path('dashboard_travel')}}">test</a></li>
+                    <li><a href="{{ path('dashboard_travel_add')}}">ajouter</a></li>
+                </ul>
+            </li>
             <li>
                 <a href="#"><span class="glyphicon glyphicon-map-marker"></span>Lieux</a>
             </li>
+            {% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard', label: 'Messages', icon: 'comment' } %}
             <li>
-                <a href="#"><span class="glyphicon glyphicon-comment"></span>Commentaires</a>
+                <a href="#" class="dropdown"><span class="glyphicon glyphicon-user"></span>Mon profil</a>
             </li>
-            <li>
-                <a href="#"><span class="glyphicon glyphicon-user"></span>Mon profil</a>
-            </li>
-            <li>
-                <a href="{{path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-off"></span>Déconnexion</a>
-            </li>
+            {% include 'embed/nav/dashboard/link.html.twig' with { path: 'fos_user_security_logout', label: 'Déconnexion', icon: 'off' } %}
         </ul>
     </nav>
