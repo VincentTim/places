@@ -2,7 +2,7 @@
 
 {% block dashboard_content %}
 <div class="row">
-    {{dashboard_count_block_render('green', 'send', '1254', 'voyages')}}
+    {{dashboard_count_block_render('green', 'send', travels|length, 'voyages')}}
 </div>
 
 {% endblock %}

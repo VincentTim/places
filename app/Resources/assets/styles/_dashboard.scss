@@ -58,11 +58,22 @@ display: inline-block;
                         }
                         
                         &:hover {
+                            padding-left:10px;
                             text-decoration:none;
-                            @include navLinkState();   
+                            transition: padding-left 0.1s linear;
+                            @include navLinkState(); 
                         }
                         &.active {
                             @include navLinkState();    
+                        }
+                    }
+                    
+                    ul.drop-menu {
+                        display:none;
+                        li {
+                            a {
+                                padding-left:30px;
+                            }
                         }
                     }
                 }

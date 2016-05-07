@@ -155,3 +155,20 @@ sonata_media:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     false
+stfalcon_tinymce:
+        include_jquery: true
+        tinymce_jquery: true
+        selector: ".tinymce"
+        base_url: %assets_base_url%
+        language: 'fr'
+        theme:
+            simple:
+                theme: "modern"
+                plugins:
+                    - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
+                    - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                    - "insertdatetime media nonbreaking save table contextmenu directionality"
+                    - "emoticons template paste textcolor"
+                toolbar1: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+                image_advtab: false
+                menubar: false

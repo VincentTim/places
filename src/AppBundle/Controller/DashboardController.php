@@ -12,7 +12,8 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/main.html.twig');
+        $travels = $this->get('entity.management')->rep('Travel')->findAll();
+        return $this->render('default/main.html.twig', array('travels'=>$travels));
     }
 
 }

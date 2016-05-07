@@ -4,16 +4,19 @@
 			{% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard', label: 'Dashboard', icon: 'dashboard' } %}
 			
 	        <li>
-                <a href="#" class="dropdown"><span class="glyphicon glyphicon-send"></span>Voyages</a>
-                <ul>
-                    <li><a href="{{ path('dashboard_travel')}}">test</a></li>
-                    <li><a href="{{ path('dashboard_travel_add')}}">ajouter</a></li>
+                <a href="#" class="dropdown-btn"><span class="glyphicon glyphicon-send"></span>Voyages</a>
+                <ul class="drop-menu">
+                    <li><a href="{{ path('dashboard_travel')}}"><span class="glyphicon glyphicon-th-list"></span>Liste</a></li>
+                    <li><a href="{{ path('dashboard_travel_add')}}"><span class="glyphicon glyphicon-plus"></span>Ajouter</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#"><span class="glyphicon glyphicon-map-marker"></span>Lieux</a>
             </li>
-            {% include 'embed/nav/dashboard/link.html.twig' with { path: 'dashboard', label: 'Messages', icon: 'comment' } %}
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-comment"></span>Messages</a>
+            </li>
+        
             <li>
                 <a href="#" class="dropdown"><span class="glyphicon glyphicon-user"></span>Mon profil</a>
             </li>

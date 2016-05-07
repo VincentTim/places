@@ -4,7 +4,8 @@
 
 	var modules = [
 		'_backstretch',
-        '_collection'
+        '_collection',
+        '_nav'
 	];
 
 	var modulesLoaded = [];
