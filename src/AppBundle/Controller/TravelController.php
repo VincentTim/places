@@ -32,10 +32,19 @@ class TravelController extends Controller
     
     /**
      * @Route("/dashboard/voyages/ajout", name="dashboard_travel_add")
+     * @Route("/dashboard/voyages/edition/{id}", name="dashboard_travel_edit")
      */
-    public function addTravelAction()
+    public function addTravelAction($id = null)
     {
-        $form = $this->createForm(new TravelType());
+        if($id != null){
+            $travel = $this->get('entity.management')->rep('Travel')->find($id);    
+        }
+        else {
+            $travel = new Travel();    
+        }
+        
+        $form = $this->createForm(new TravelType(), $travel);
+        
         return $this->render('default/travel.html.twig', array(
             'form'=>$form->createView()
             )
@@ -81,13 +90,31 @@ class TravelController extends Controller
 				}
 				
 				
-			}
-		} else {
+			} else {
 			
-		}
+		      }
+		} 
 		
 		
 		
 	}
+    
+    /**
+	*
+	* @Route("/dashboard/voyages/suppression/{id}", name="dashboard_travel_delete")
+	*/
+	public function deleteTravelAction(Request $request, $id)
+	{
+		$trip = $this->get('entity.management')->rep('Travel')->find($id);
+		
+        try {
+				$this->get('entity.management')->delete($trip);
+				return $this->redirectToRoute('dashboard_travel', array(), 301);
+                    
+				} catch(\Exception $e){
+					var_dump($e);
+				}
+				
+    }
 
 }

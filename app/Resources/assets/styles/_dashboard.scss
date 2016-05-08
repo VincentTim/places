@@ -28,6 +28,13 @@ display: inline-block;
         
     }
 
+.list-group {
+    .action {
+        float: right;
+        margin: 0 5px 0 5px;
+    }
+}
+
 #dashboard-nav-wrapper {
     min-width:225px;
     height:100%;
