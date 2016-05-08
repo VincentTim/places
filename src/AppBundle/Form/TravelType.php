@@ -57,7 +57,8 @@ class TravelType extends AbstractType
                     'entry_type'   => new FileType(),
                     'allow_add'    => true,
 					'options' => array(
-						'label' => false
+						'label' => false,
+                        'required' => $options['file']
 					)
                 )
             )//entity
@@ -77,7 +78,8 @@ class TravelType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Travel'
+            'data_class' => 'AppBundle\Entity\Travel',
+            'file' => true
         ));
     }
 

@@ -48,6 +48,7 @@ class EntityManagement extends Controller
      */
     public function update($entity)
     {
+        var_dump($entity);
         $em = $this->entityManager;
         $em->flush();
 

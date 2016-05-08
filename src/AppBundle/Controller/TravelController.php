@@ -37,29 +37,49 @@ class TravelController extends Controller
     public function addTravelAction($id = null)
     {
         if($id != null){
-            $travel = $this->get('entity.management')->rep('Travel')->find($id);    
+            $travel = $this->get('entity.management')->rep('Travel')->find($id);
+            $file = false;
+            $action = 'update';
         }
         else {
-            $travel = new Travel();    
+            $travel = new Travel(); 
+            $file = true;
+            $action = 'create';
         }
         
-        $form = $this->createForm(new TravelType(), $travel);
+        $form = $this->createForm(new TravelType(), $travel, array('file'=> $file));
         
         return $this->render('default/travel.html.twig', array(
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'action'=>$action
             )
         );
     }
 	
 	/**
 	*
-	* @Route("/dashboard/voyages/contribution", name="dashboard_travel_contribute")
+	* @Route("/dashboard/voyages/contribution/{id}", name="dashboard_travel_contribute")
 	*/
-	public function contributeTravelAction(Request $request)
+	public function contributeTravelAction(Request $request, $id = null)
 	{
-		$trip = new Travel();
+		if($id != null){
+            $travel = $this->get('entity.management')->rep('Travel')->find($id);
+            
+            //Pour la mise à jour des tags, on supprime d'abord ceux enregistrés et liés
+            foreach($travel->getTags() as $tag){
+				$tag->removeTravel($travel);
+				$travel->removeTag($tag);
+                $this->get('entity.management')->delete($tag);
+                
+            }
+            
+        }
+        else {
+            $travel = new Travel(); 
+        }
 		
 		$form = $this->createForm(new TravelType());
+        $datas = $request->request->all();
 		
 		if($request->getMethod() == 'POST'){
 			
@@ -67,24 +87,43 @@ class TravelController extends Controller
 			
 			if($form->isValid()){
 				
-				$trip = $form->getData();
+				$travel = $form->getData();
 				
 				try {
-					
-					foreach($trip->getTags() as $tag){
-							$tag->addTravel($trip);
-							$trip->addTag($tag);
-					}
                     
-                    foreach($trip->getFiles() as $file){
+					//On ajoute les mots clés
+                    if(count($travel->getTags()) > 0){
+                        foreach($travel->getTags() as $tag){
+                                $tag->addTravel($travel);
+                                $travel->addTag($tag);
+                        }
+                    }
+                    
+                    //On ajoute les fichiers
+                    if(count($travel->getFiles()) > 0){
+                        foreach($travel->getFiles() as $file){
 							$file->upload();
-                            $file->setTravel($trip);
-					}
+                            $file->setTravel($travel);
+					   }    
+                    }
+                    
+                    if($id != null){
+                        $travel->setUpdated(new \DateTime());
+                    }
+                    else {
+                        $travel->setCreated(new \DateTime());
+					    $travel->setUpdated(new \DateTime());
+                    }
+                    
+                    if($id != null){
+                        $this->get('entity.management')->update($travel);
+                        return $this->redirectToRoute('dashboard_travel_edit', array('id'=>$id), 301);
+                    }
+                    else {
+                        $this->get('entity.management')->add($travel);
+                        return $this->redirectToRoute('dashboard_travel_add', array(), 301);
+                    }
 					
-					$trip->setCreated(new \DateTime());
-					$trip->setUpdated(new \DateTime());
-					$this->get('entity.management')->add($trip);
-					return $this->redirectToRoute('dashboard_travel_add', array(), 301);
 				} catch(\Exception $e){
 					var_dump($e);
 				}

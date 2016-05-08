@@ -98,16 +98,12 @@ fos_user:
     user_class: AppBundle\Entity\User
 
 liip_imagine:
-    resolvers:
-       default:
-          web_path: ~
-
     filter_sets:
         cache: ~
         my_thumb:
             quality: 75
             filters:
-                thumbnail: { size: [120, 90], mode: outbound }
+                relative_resize: { heighten: 80 }
         item_list:
             quality: 75
             filters:
