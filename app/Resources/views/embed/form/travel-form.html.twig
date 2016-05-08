@@ -16,6 +16,9 @@
 		</div>
 	</div>
     <div class="form-files">
+        
+		{{ form_row(form.files) }}
+        
         {% if form.vars.value.files | length > 0 %}
             <ul class="list-group">
                 {% for item in form.vars.value.files %}
@@ -23,7 +26,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-		{{ form_row(form.files) }}
+        
 		<div class="form-group">
 			<ul class="files"></ul>
 		</div>

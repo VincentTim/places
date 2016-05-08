@@ -78,7 +78,7 @@ class TravelController extends Controller
             $travel = new Travel(); 
         }
 		
-		$form = $this->createForm(new TravelType());
+		$form = $this->createForm(new TravelType(), $travel);
         $datas = $request->request->all();
 		
 		if($request->getMethod() == 'POST'){
