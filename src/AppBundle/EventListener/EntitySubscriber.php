@@ -39,4 +39,8 @@ class EntitySubscriber implements EventSubscriber
             $entity->setUpdated(new \DateTime());
         }
     }
+    
+    public function persistTags($args){
+        
+    }
 }

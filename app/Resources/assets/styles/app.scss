@@ -1,17 +1,6 @@
 /**
  * App main file
  */
-@mixin borderRadius($value) {
-    -webkit-border-radius: $value;
-    -moz-border-radius: $value;
-    border-radius: $value;
-}
-@mixin navLinkState() {
-    border-left: 3px solid $c-yellow-lime;
-    background:$c-active-blue;
-    color: $c-white;
-}
-
 
 /**
  * global vars
@@ -86,6 +75,10 @@ $transition-function : cubic-bezier(0.165, 0.84, 0.44, 1);
  */
 @import 'vendors/_normalize.scss';
 @import '_bootstrap.scss';
+@import '_helpers.scss';
+@import '_sprite-icon.data.scss';
+@import '_datepicker.scss';
+
 
 /*@import '_styles.scss';
 @import '_sidebar.scss';

@@ -32,14 +32,14 @@ class Travel
     /**
      * @var date
      *
-     * @ORM\Column(name="period_from", type="date")
+     * @ORM\Column(name="period_from", type="string", length=10)
      */
     private $period_from;
 
     /**
      * @var date
      *
-     * @ORM\Column(name="period_to", type="date")
+     * @ORM\Column(name="period_to", type="date", type="string", length=10)
      */
     private $period_to;
 
@@ -56,13 +56,6 @@ class Travel
      * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cover", type="string", length=255)
-     */
-    private $cover;
 
     /**
      * @var string
@@ -89,6 +82,12 @@ class Travel
     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="travels", cascade={"persist", "remove"})
     **/
     private $tags;
+    
+    /**
+    *
+    * @ORM\OneToMany(targetEntity="File", mappedBy="travel", cascade={"persist", "remove"})
+    **/
+    private $files;
 
     /**
     *
@@ -223,29 +222,6 @@ class Travel
     }
 
     /**
-     * Set cover
-     *
-     * @param string $cover
-     * @return Travel
-     */
-    public function setCover($cover)
-    {
-        $this->cover = $cover;
-
-        return $this;
-    }
-
-    /**
-     * Get cover
-     *
-     * @return string 
-     */
-    public function getCover()
-    {
-        return $this->cover;
-    }
-
-    /**
      * Set summary
      *
      * @param string $summary
@@ -375,5 +351,38 @@ class Travel
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Add files
+     *
+     * @param \AppBundle\Entity\File $files
+     * @return Travel
+     */
+    public function addFile(\AppBundle\Entity\File $files)
+    {
+        $this->files[] = $files;
+
+        return $this;
+    }
+
+    /**
+     * Remove files
+     *
+     * @param \AppBundle\Entity\File $files
+     */
+    public function removeFile(\AppBundle\Entity\File $files)
+    {
+        $this->files->removeElement($files);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

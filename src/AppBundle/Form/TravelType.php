@@ -24,17 +24,16 @@ class TravelType extends AbstractType
             )
             ->add('period_from', 'text', array(
                     'label' => 'Date de début',
-                    'attr' => array('class' => 'datepicker'),
+                    'attr' => array('class' => 'form__datepicker'),
                     'required' => true
                 )
             )
             ->add('period_to', 'text', array(
                     'label' => 'Date de fin',
-                    'attr' => array('class' => 'datepicker'),
+                    'attr' => array('class' => 'form__datepicker'),
                     'required' => true
                 )
             )
-            ->add('cover')
             ->add('summary', 'textarea', array(
                     'label' => 'Résumé',
                     'required' => true
@@ -53,8 +52,21 @@ class TravelType extends AbstractType
 						'label' => false
 					)
                 )
+            )
+            ->add('files', 'collection', array(
+                    'entry_type'   => new FileType(),
+                    'allow_add'    => true,
+					'options' => array(
+						'label' => false
+					)
+                )
             )//entity
-            ->add('country')//entity
+            ->add('country', 'entity', array(
+                'label' => 'Pays',
+                'property' => 'name',
+                'class' => 'AppBundle:Country',
+                
+            ))//entity
             ->add('save', 'submit', array('label'=> 'Enregistrer', 'attr' => array('class'=>'btn btn-success')))
         ;
     }

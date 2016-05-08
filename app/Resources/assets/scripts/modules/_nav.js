@@ -7,12 +7,13 @@ module.exports = function(context){
 	"use strict";
 
     function dashboardNav(){
-        $('.dropdown-btn').click(function(){
+        $('.dropdown-btn').click(function(e){
+            e.stopPropagation();
             $(this).next('.drop-menu').slideDown();
-            $(this).toggleClass('open');
             if($(this).hasClass('open')){
                 $(this).next('.drop-menu').slideUp();    
             }
+            $(this).toggleClass('open');
         })
     }
 	

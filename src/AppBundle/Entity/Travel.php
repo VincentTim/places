@@ -60,13 +60,6 @@ class Travel
     /**
      * @var string
      *
-     * @ORM\Column(name="cover", type="string", length=255)
-     */
-    private $cover;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="summary", type="string", length=255)
      */
     private $summary;
@@ -89,6 +82,12 @@ class Travel
     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="travels", cascade={"persist", "remove"})
     **/
     private $tags;
+    
+    /**
+    *
+    * @ORM\OneToMany(targetEntity="File", mappedBy="travel", cascade={"persist", "remove"})
+    **/
+    private $files;
 
     /**
     *
@@ -223,29 +222,6 @@ class Travel
     }
 
     /**
-     * Set cover
-     *
-     * @param string $cover
-     * @return Travel
-     */
-    public function setCover($cover)
-    {
-        $this->cover = $cover;
-
-        return $this;
-    }
-
-    /**
-     * Get cover
-     *
-     * @return string 
-     */
-    public function getCover()
-    {
-        return $this->cover;
-    }
-
-    /**
      * Set summary
      *
      * @param string $summary
@@ -375,5 +351,38 @@ class Travel
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Add files
+     *
+     * @param \AppBundle\Entity\File $files
+     * @return Travel
+     */
+    public function addFile(\AppBundle\Entity\File $files)
+    {
+        $this->files[] = $files;
+
+        return $this;
+    }
+
+    /**
+     * Remove files
+     *
+     * @param \AppBundle\Entity\File $files
+     */
+    public function removeFile(\AppBundle\Entity\File $files)
+    {
+        $this->files->removeElement($files);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 use AppBundle\Form\TravelType;
 use AppBundle\Form\TagType;
+use AppBundle\Form\FileType;
 
 use AppBundle\Entity\Travel;
+use AppBundle\Entity\File;
 
 class TravelController extends Controller
 {
@@ -63,6 +65,11 @@ class TravelController extends Controller
 					foreach($trip->getTags() as $tag){
 							$tag->addTravel($trip);
 							$trip->addTag($tag);
+					}
+                    
+                    foreach($trip->getFiles() as $file){
+							$file->upload();
+                            $file->setTravel($trip);
 					}
 					
 					$trip->setCreated(new \DateTime());

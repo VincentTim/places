@@ -1,0 +1,42 @@
+/**
+ * Structure par défaut de tout nouveau module
+ */
+
+module.exports = function(context){
+
+	"use strict";
+    
+    var datepicker = require('jquery-ui/datepicker');
+
+    function initDatePicker() {
+		$.datepicker.regional['fr'] = {
+			closeText: 'Fermer',
+			prevText: '&#x3c;Préc',
+			nextText: 'Suiv&#x3e;',
+			currentText: 'Courant',
+			monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+			monthNamesShort: ['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'],
+			dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+			dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+			dayNamesMin: ['D','L','M','M','J','V','S'],
+			weekHeader: 'Sm',
+			dateFormat: 'dd/mm/yy',
+			firstDay: 1,
+			isRTL: false,
+			showMonthAfterYear: false,
+			yearSuffix: ''
+		};
+		$('.form__datepicker').datepicker($.datepicker.regional[ "fr" ]);
+	}
+	
+
+	function init(){
+         
+        initDatePicker();
+	}
+
+	return {
+		ready : init
+	}
+
+};

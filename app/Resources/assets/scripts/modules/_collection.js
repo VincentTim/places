@@ -6,16 +6,20 @@ module.exports = function(context){
 
 	"use strict";
 
-    function addTagCollection() {
+    function addTagCollection(bloc) {
         
         var $collectionHolder;
+        var label;
+        
+        if(bloc == 'tags'){ label = 'Ajouter un mot clé'; }
+        if(bloc == 'files'){ label = 'Ajouter une image'; }
 
         // setup an "add a tag" link
-        var $addTagLink = $('<a href="#" class="btn btn-info add_tag_link">Ajouter un mot-clé</a>');
+        var $addTagLink = $('<a href="#" class="btn btn-info add_'+bloc+'_link">'+label+'</a>');
         var $newLinkLi = $('<div></div>').append($addTagLink);
         
         // Get the ul that holds the collection of tags
-        $collectionHolder = $('#appbundle_travel_tags');
+        $collectionHolder = $('#appbundle_travel_'+bloc);
 
         // add the "add a tag" anchor and li to the tags ul
         $collectionHolder.append($newLinkLi);
@@ -54,7 +58,8 @@ module.exports = function(context){
 	
 
 	function init(){
-        addTagCollection();
+        addTagCollection('tags');
+        addTagCollection('files');
 	}
 
 	return {
