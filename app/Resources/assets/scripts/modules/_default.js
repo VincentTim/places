@@ -7,6 +7,7 @@ module.exports = function(context){
 	"use strict";
     
     var datepicker = require('jquery-ui/datepicker');
+	var fancybox = require('fancybox');
 
     function initDatePicker() {
 		$.datepicker.regional['fr'] = {
@@ -28,11 +29,28 @@ module.exports = function(context){
 		};
 		$('.form__datepicker').datepicker($.datepicker.regional[ "fr" ]);
 	}
+    
+    function deleteImageContrib(){
+        $(".delete-image").click(function(e){
+            e.preventDefault();
+            if(confirm('Etes-vous sûr de vouloir supprimer cette image?')){
+                $(this).parent().fadeOut();
+                $(this).parents('.form-files').append('<input name="appbundle_files_delete[]" type="hidden" value="'+$(this).data('id')+'" />');
+            }
+        })
+    }
+	
+	function initFancyBox(){
+			$('.fancybox').fancybox();
+	}
 	
 
 	function init(){
          
         initDatePicker();
+        deleteImageContrib();
+		initFancyBox();
+        
 	}
 
 	return {

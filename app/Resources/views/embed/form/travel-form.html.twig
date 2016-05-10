@@ -20,9 +20,17 @@
 		{{ form_row(form.files) }}
         
         {% if form.vars.value.files | length > 0 %}
+            <h2>Liste des images enregistrées</h2>
             <ul class="list-group">
                 {% for item in form.vars.value.files %}
-                <li class="list-group-item"><img src="{{ ('upload/media/' ~ item.name) | imagine_filter('my_thumb') }}"/>{{item.name}}</li>
+                <li class="list-group-item">
+				<a href="{{ asset('upload/media/')}}{{ item.name }}" class="fancybox">
+					<img src="{{ ('upload/media/' ~ item.name) | imagine_filter('my_thumb') }}"/>
+				</a>
+                    <a href="#" class="delete-image" data-id="{{item.id}}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </li>
                 {% endfor %}
             </ul>
         {% endif %}
