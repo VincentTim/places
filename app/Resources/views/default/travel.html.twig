@@ -9,7 +9,6 @@
             {% include 'embed/form/travel-form.html.twig' %}
         {% endif %}
         {% if app.request.attributes.get('_route') == 'dashboard_travel' %}
-            {{dump(liste)}}
             <ul class="list-group">
                 {% for item in liste %}
                 <li class="list-group-item">
